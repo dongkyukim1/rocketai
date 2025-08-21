@@ -88,4 +88,24 @@ body {
 	.bubble { font-size: clamp(8px, 3.8vw, 16px); }
 }
 
+@media (max-width: 200px) {
+	.bubble { font-size: clamp(7px, 4.4vw, 14px); }
+}
+
+@media (max-width: 140px) {
+	.bubble { font-size: clamp(6px, 4.8vw, 13px); }
+}
+
+@media (max-width: 100px) {
+	.bubble { font-size: clamp(5.5px, 5.2vw, 12px); }
+}
+
+@media (max-width: 60px) {
+	.bubble { font-size: clamp(5px, 5.6vw, 11px); }
+}
+
+@media (max-width: 50px) {
+	.bubble { font-size: clamp(4.8px, 6vw, 10px); }
+}
+
 
