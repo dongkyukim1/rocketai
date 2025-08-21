@@ -92,7 +92,7 @@
 .title {
 	font-weight: 800;
 	letter-spacing: 0.02em;
-    font-size: clamp(13px, 3.8vw, 18px);
+    font-size: clamp(12px, 3.2vw, 18px);
 	color: rgba(66, 66, 66, 1);
 	font-family: 'GapyeongHanseokbong-Bold', sans-serif;
 }
@@ -101,7 +101,7 @@
 	margin-top: 4px;
 	font-weight: 700;
 	color: rgba(66, 66, 66, 1);
-    font-size: clamp(14px, 5.2vw, 20px);
+    font-size: clamp(12px, 4.2vw, 20px);
 	font-family: 'GapyeongHanseokbong-Bold', sans-serif;
 }
 
@@ -127,7 +127,7 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: clamp(40px, 14%, 128px) repeat(4, 1fr); /* 초소형 화면 대응: 첫 열 최소폭 축소 */
+	grid-template-columns: clamp(36px, 14%, 128px) repeat(4, 1fr); /* 더 작은 최소폭 */
 	/* 표 외곽선은 얇은 보더가 담당 → 그리드 외곽 보더 제거 */
 	border: 0;
 	background: rgba(245, 243, 236, 1);
@@ -140,6 +140,7 @@
 }
 
 
+
 .cell,
 .rowHead,
 .colHead {
@@ -149,7 +150,7 @@
 	border-top: 0;
 	border-left: 0;
 	padding: 0 2px; /* 세로 패딩 0으로 공간 확보, 가로 여백 살짝 축소로 배지 가로 확장 */
-	font-size: clamp(9px, 2.1vw, 13px);
+	font-size: clamp(8px, 1.9vw, 13px);
 	text-align: center;
 	color: rgba(0, 0, 0, 1);
 	font-weight: 700; /* 모든 텍스트 Bold */
@@ -177,7 +178,7 @@
 	font-weight: 900;
 	background: rgba(245, 243, 236, 1) !important;
 	color: rgba(0, 0, 0, 1);
-	font-size: clamp(16px, 4.8vw, 22px);
+	font-size: clamp(14px, 4.4vw, 22px);
 	line-height: 1;
 }
 
@@ -196,7 +197,7 @@
 .cellWhite { background: rgba(255, 255, 255, 1) !important; }
 
 /* 중간 높이(2,5,6,7번째 행 공통) - 살짝 더 낮춤 */
-.rowMid { min-height: clamp(26px, 8.4vw, 60px); display:flex; align-items:center; justify-content:center; padding: 2px 6px; }
+.rowMid { min-height: clamp(22px, 7.6vw, 60px); display:flex; align-items:center; justify-content:center; padding: 1px 4px; }
 /* 불사용 행 크기 유틸 제거: .rowMidLarge */
 
 /* 뱃지 두 행 사이 가로 구분선(천간 아래 라인만 얇고 회색) */
@@ -237,7 +238,7 @@
 .white .badgeTop { color: #2b2d31; }
 
 .badgeMain {
-	font-size: clamp(9px, 4.6vw, 22px);
+	font-size: clamp(8px, 4vw, 22px);
 	line-height: 1;
 	grid-row: 2;
 	font-weight: 800;
@@ -276,39 +277,39 @@
 	border: 2px solid #2c3e50;
 }
 
-.pairCn { font-size: clamp(9px, 3.2vw, 15px); font-weight: 700; }
-.pairKr { font-family: 'Gyeonggi_Batang_Regular', sans-serif; font-size: clamp(6.5px, 2.4vw, 12px); opacity: 0.9; margin-top: 2px; font-weight: 300; font-synthesis: none; }
+.pairCn { font-size: clamp(8px, 2.8vw, 15px); font-weight: 700; }
+.pairKr { font-family: 'Gyeonggi_Batang_Regular', sans-serif; font-size: clamp(6px, 2.2vw, 12px); opacity: 0.9; margin-top: 2px; font-weight: 300; font-synthesis: none; }
 
 /* 스택 정렬과 하단 행 높이 */
 .stack { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.rowVeryTall { min-height: clamp(64px, 19vw, 116px); display:flex; align-items:center; justify-content:center; }
+.rowVeryTall { min-height: clamp(56px, 17vw, 116px); display:flex; align-items:center; justify-content:center; }
 
 /* 특정 행 높이 조절용 유틸 */
 /* 천간/지지 줄 높이: 표 변경 없이 이전 값으로 복원 */
 /* 배지 줄 높이 살짝 축소 */
-.rowTall { min-height: clamp(34px, 8.2vw, 56px); height: auto; display:flex; align-items:center; justify-content:center; padding: 0 4px; }
-.rowHeadTall { min-height: clamp(34px, 8.2vw, 56px); height: auto; display:flex; align-items:center; justify-content:center; padding: 0 4px; flex-direction: column; gap: 2px; white-space: nowrap; }
+.rowTall { min-height: clamp(28px, 7.2vw, 56px); height: auto; display:flex; align-items:center; justify-content:center; padding: 0 4px; }
+.rowHeadTall { min-height: clamp(28px, 7.2vw, 56px); height: auto; display:flex; align-items:center; justify-content:center; padding: 0 4px; flex-direction: column; gap: 2px; white-space: nowrap; }
 
 @media (max-width: 360px) {
 	/* 초소형 화면에서 내부 여백을 더 줄여 텍스트가 잘리지 않도록 */
 	.cell, .rowHead, .colHead { padding: 0 2px; }
 	.badge { padding: clamp(0px, 0.6vw, 4px); }
 	/* 컬럼 비율과 최소폭 추가 축소 */
-	.grid { grid-template-columns: clamp(40px, 18%, 96px) repeat(4, 1fr); }
+	.grid { grid-template-columns: clamp(34px, 18%, 96px) repeat(4, 1fr); }
 	/* 글자 크기/행 높이 더 축소 */
-	.colHead { font-size: clamp(12px, 4.4vw, 18px); }
-	.rowMid { min-height: clamp(18px, 7.8vw, 46px); padding: 1px 4px; }
-	.rowTall { min-height: clamp(24px, 7.4vw, 48px); }
-	.rowHeadTall { min-height: clamp(24px, 7.4vw, 48px); }
-	.rowVeryTall { min-height: clamp(44px, 15vw, 88px); }
-	.pairCn { font-size: clamp(7px, 2.8vw, 12px); }
-	.pairKr { font-size: clamp(6px, 2.4vw, 10px); }
+	.colHead { font-size: clamp(11px, 4.2vw, 18px); }
+	.rowMid { min-height: clamp(16px, 7.2vw, 46px); padding: 1px 3px; }
+	.rowTall { min-height: clamp(22px, 6.8vw, 48px); }
+	.rowHeadTall { min-height: clamp(22px, 6.8vw, 48px); }
+	.rowVeryTall { min-height: clamp(40px, 14vw, 88px); }
+	.pairCn { font-size: clamp(6.5px, 2.6vw, 12px); }
+	.pairKr { font-size: clamp(5.5px, 2.2vw, 10px); }
 	.badge { border-radius: clamp(8px, 3vw, 14px); }
-	.badgeMain { font-size: clamp(8px, 4vw, 18px); }
-	.badgeTop { font-size: clamp(4px, 1.8vw, 8px); }
-	.badgeSub { font-size: clamp(4px, 1.8vw, 8px); }
-	.title { font-size: clamp(12px, 3.4vw, 16px); }
-	.datetime { font-size: clamp(12px, 4.4vw, 18px); }
+	.badgeMain { font-size: clamp(7px, 3.6vw, 18px); }
+	.badgeTop { font-size: clamp(3.6px, 1.6vw, 8px); }
+	.badgeSub { font-size: clamp(3.6px, 1.6vw, 8px); }
+	.title { font-size: clamp(11px, 3.2vw, 16px); }
+	.datetime { font-size: clamp(11px, 4vw, 18px); }
 }
 
 @media (max-width: 320px) {
@@ -320,12 +321,12 @@
 /* 첫 번째 세로열: 한자(1행) 대비 한글(2행)을 4px 작게 */
 .rowHead > *:first-child,
 .rowHeadTall > *:first-child {
-	font-size: clamp(7px, 2.2vw, 13px);
+	font-size: clamp(6.5px, 2vw, 13px);
 }
 
 .rowHead > *:last-child,
 .rowHeadTall > *:last-child {
-	font-size: clamp(7px, 2.3vw, 9.5px);
+	font-size: clamp(6.2px, 2.1vw, 9.5px);
 	font-family: 'Gyeonggi_Batang_Regular', sans-serif;
 	font-weight: 300;
 	font-synthesis: none;
@@ -333,7 +334,7 @@
 
 @media (min-width: 480px) {
 	.grid {
-		grid-template-columns: clamp(72px, 15%, 140px) repeat(4, 1.22fr); /* 큰 화면에서 첫 열 크게, 데이터 열도 넓게 */
+		grid-template-columns: clamp(64px, 15%, 140px) repeat(4, 1.22fr); /* 큰 화면에서 첫 열 크게, 데이터 열도 넓게 */
 	}
 	.cell, .rowHead, .colHead { padding: 2px 6px; }
 }
