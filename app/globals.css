@@ -1,0 +1,86 @@
+:root { 
+  --canvas-max-width: 448px; 
+  --canvas-padding: 0px; 
+  --bg: rgba(243, 242, 239, 1); 
+  /* 표 오버레이 시작 지점 (캔버스 너비 비율 기반) */
+  --table-offset-ratio: 3.70; /* 더 아래로 내림: 2.194 → 2.26 */
+  --table-extra-offset: 0px; /* 필요 시 px 단위 보정 */
+}
+
+html, body { 
+  padding: 0; 
+  margin: 0; 
+  background: transparent; 
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+body { 
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', '맑은 고딕', sans-serif; 
+}
+
+.container { 
+  width: 100%; 
+  max-width: var(--canvas-max-width); 
+  margin-inline: auto; 
+  padding: var(--canvas-padding); 
+  display: flex; 
+  flex-direction: column; 
+  align-items: stretch; 
+}
+
+.panel { 
+  width: 100%; 
+}
+
+/* 1~3 합쳐진 첫 패널만 배경색 적용 */
+.panel:first-of-type { background: var(--bg); }
+
+.panel img, .panel span { 
+  display: block; 
+  width: 100%; 
+  height: auto; 
+}
+
+/* 패널 안의 컴포넌트도 전체 폭 사용 */
+.panel > * { 
+  display: block; 
+  width: 100%; 
+}
+
+/* 4번 표가 이미지 위에 겹치도록: 레이아웃은 유지, 화면에서만 이동 */
+/* overlay 패널: 절대 배치로 이미지 위에 올림 */
+.panel.overlay {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--table-offset-ratio) * min(100vw, var(--canvas-max-width)) + var(--table-extra-offset));
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 100%;
+  max-width: var(--canvas-max-width);
+  background: transparent;
+}
+
+/* 말풍선 오버레이 */
+.overlay.bubbles { position: absolute; inset: 0; left: 50%; transform: translateX(-50%); z-index: 999; width: 100%; max-width: var(--canvas-max-width); pointer-events: none; }
+/* 개별 위치 제어용 CSS 변수 지원 */
+.bubble { position: absolute; width: 78%; text-align: center; color: #2b2d31; font-family: 'GapyeongHanseokbong-Bold', sans-serif; font-weight: 400; font-size: clamp(15px, 3.6vw, 19px); line-height: 1.5; letter-spacing: -0.025em; z-index: 1000; top: var(--top, auto); right: var(--right, auto); bottom: var(--bottom, auto); left: var(--left, auto); transform: translate(var(--tx, 0), var(--ty, 0)); }
+/* 중앙 정렬 헬퍼 */
+.bubble.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.bubble.b1 { position: absolute; left: 35%; top: 34.3%; }
+.bubble.b2 { position: absolute; left: 39%; top: 52.0%; }
+/* 컨테이너는 기준 컨텍스트 제공 */
+.container { position: relative; }
+
+/* 폰트 가중치 → 패밀리 매핑 유틸 클래스 */
+.fw-100 { font-family: 'Pretendard-Thin', 'Pretendard', sans-serif; font-weight: 100; }
+.fw-200 { font-family: 'Pretendard-ExtraLight', 'Pretendard', sans-serif; font-weight: 200; }
+.fw-300 { font-family: 'Pretendard-Light', 'Pretendard', sans-serif; font-weight: 300; }
+.fw-400 { font-family: 'Pretendard-Regular', 'Pretendard', sans-serif; font-weight: 400; }
+.fw-500 { font-family: 'Pretendard-Medium', 'Pretendard', sans-serif; font-weight: 500; }
+.fw-600 { font-family: 'Pretendard-SemiBold', 'Pretendard', sans-serif; font-weight: 600; }
+.fw-700 { font-family: 'Pretendard-Bold', 'Pretendard', sans-serif; font-weight: 700; }
+.fw-800 { font-family: 'Pretendard-ExtraBold', 'Pretendard', sans-serif; font-weight: 800; }
+.fw-900 { font-family: 'Pretendard-Black', 'Pretendard', sans-serif; font-weight: 900; }
+
+

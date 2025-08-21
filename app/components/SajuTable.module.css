@@ -1,0 +1,319 @@
+
+@font-face {
+	font-family: 'Gyeonggi_Batang_Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+/* 굵은 가중치(700)도 사용 가능하도록 추가 선언 */
+@font-face {
+	font-family: 'Gyeonggi_Batang_Regular';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+/* 불사용 폰트 제거: 'Gyeonggi_Title_Medium' */
+
+@font-face {
+	font-family: 'GapyeongHanseokbong-Bold';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/GapyeongHanseokbong-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+.wrapper {
+	background: #f5f3ec;
+	border: 3px solid rgba(27, 47, 73, 1);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	border-radius: 0;
+	padding: 12px 15px 12px 15px; /* 하단 패딩 축소 */
+	position: relative;
+	box-sizing: border-box;
+	--table-shrink: clamp(12px, 3vw, 24px);
+	width: calc(100% - var(--table-shrink)); /* 1,2,3보다 약간 좁게(반응형) */
+	margin-inline: auto;
+	--gap2: clamp(8px, 3vw, 12px);   /* 얇은 보더 ↔ 표 그리드 간격 */
+	--guide-offset: clamp(12px, 2.4vw, 18px); /* 내부 가로/세로 라인 오프셋 */
+	--guide-offset-top: calc(var(--guide-offset) - clamp(2px, 0.8vw, 4px)); /* 상단 라인 위로 */
+	--guide-offset-bottom: clamp(4px, 0.8vw, 8px); /* 하단 라인을 테두리 쪽으로 더 내림 */
+	--guide-gap-extra: clamp(6px, 1.2vw, 10px); /* 표와 하단 가이드선 여유 */
+}
+
+.inner {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: var(--gap2);
+	padding-bottom: calc(var(--gap2) - 4px); /* 여백 더 축소 */
+	overflow: hidden; /* 어떤 이유로든 내용이 넘치지 않도록 */
+}
+
+/* 얇은 보더: wrapper 내부 전체 100% */
+.wrapper::before {
+	content: '';
+	position: absolute;
+	inset: 0; /* 가로 100%, 세로 100% */
+	border: 1px solid rgba(43, 85, 126, 1);
+	border-radius: 0;
+	pointer-events: none;
+}
+
+/* 보조 라인 제거 */
+/* 내부 가이드 선: 가장 굵은 보더에서 약간 떨어진 1px 가로/세로 라인 */
+.wrapper::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background:
+		/* 좌측 세로선 */
+		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
+			left calc(var(--guide-offset) - 2px) top 0 / 1px 100% no-repeat,
+		/* 우측 세로선 */
+		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
+			right calc(var(--guide-offset) - 4px) top 0 / 1px 100% no-repeat,
+		/* 상단 가로선 */
+		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
+			left 0 top var(--guide-offset-top) / 100% 1px no-repeat,
+		/* 하단 가로선 */
+		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
+			left 0 bottom var(--guide-offset-bottom) / 100% 1px no-repeat;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 12px;
+	position: relative;
+	padding: 10px 0;
+}
+
+.title {
+	font-weight: 800;
+	letter-spacing: 0.02em;
+    font-size: clamp(13px, 3.8vw, 18px);
+	color: rgba(66, 66, 66, 1);
+	font-family: 'GapyeongHanseokbong-Bold', sans-serif;
+}
+
+.datetime {
+	margin-top: 4px;
+	font-weight: 700;
+	color: rgba(66, 66, 66, 1);
+    font-size: clamp(14px, 5.2vw, 20px);
+	font-family: 'GapyeongHanseokbong-Bold', sans-serif;
+}
+
+.header::before,
+.header::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: clamp(44px, 10.5vw, 72px); /* 살짝 축소 */
+	height: clamp(30px, 7.4vw, 46px);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+/* 가이드선(Wrapper 기준)과 정확히 맞닿도록: padding 보정 + 추가 미세 조정 */
+.header::before { left: calc(var(--guide-offset) - (15px + var(--gap2) + 2px) - 2px); background-image: url('/quiz/left.png'); }
+.header::after { right: calc(var(--guide-offset) - (15px + var(--gap2) + 2px) - 4px); background-image: url('/quiz/right.png'); margin-top: -22px; }
+
+
+
+
+.grid {
+	display: grid;
+	grid-template-columns: clamp(64px, 14%, 128px) repeat(4, 1.12fr); /* 첫 열 충분히 확대, 데이터 열도 확보 */
+	/* 표 외곽선은 얇은 보더가 담당 → 그리드 외곽 보더 제거 */
+	border: 0;
+	background: rgba(245, 243, 236, 1);
+	margin: 0; /* 내부 패딩으로 간격 처리 */
+	width: 100%;
+	max-width: 700px;               /* 표 전체 가로 추가 확대 (잘림 완화) */
+	aspect-ratio: auto;             /* 고정 비율 해제 → 내용 높이에 맞춤 */
+	align-content: start;           /* 남는 세로공간을 위로 모아 내부 행 늘어남 방지 */
+	box-sizing: border-box;
+}
+
+
+.cell,
+.rowHead,
+.colHead {
+	border-right: 1.5px solid rgba(0, 0, 0, 1);
+	border-bottom: 1.5px solid rgba(0, 0, 0, 1);
+	/* 상/좌 보더는 그리지 않아 내부 라인이 한 줄만 보이게 */
+	border-top: 0;
+	border-left: 0;
+	padding: 0 2px; /* 세로 패딩 0으로 공간 확보, 가로 여백 살짝 축소로 배지 가로 확장 */
+	font-size: clamp(9px, 2.1vw, 13px);
+	text-align: center;
+	color: rgba(0, 0, 0, 1);
+	font-weight: 700; /* 모든 텍스트 Bold */
+	background: rgba(245, 243, 236, 1) !important; /* 모든 셀 배경 통일 */
+}
+
+/* 가로/세로 중앙 정렬 유틸 */
+/* 불사용 유틸 제거: .cellCenter */
+
+.rowHead {
+	background: rgba(245, 243, 236, 1) !important;
+	font-weight: 700;
+	color: rgba(0, 0, 0, 1);
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column; /* 한자 한 줄, 한글 한 줄 정렬 */
+	gap: 2px;
+	white-space: nowrap; /* 줄바꿈 방지로 각 줄을 한 줄로 유지 */
+}
+
+.colHead {
+	text-align: center;
+	font-weight: 900;
+	background: rgba(245, 243, 236, 1) !important;
+	color: rgba(0, 0, 0, 1);
+	font-size: clamp(16px, 4.8vw, 22px);
+	line-height: 1;
+}
+
+.cell {
+	text-align: center;
+	word-break: keep-all;
+	line-height: 1.1;
+	display: flex;
+	align-items: stretch; /* 배지가 높이 100%로 늘어나도록 */
+	justify-content: center;
+	flex-direction: column;
+	background: rgba(245, 243, 236, 1) !important;
+}
+
+/* 2x2 ~ 5x5 범위 셀 전용 흰 배경 */
+.cellWhite { background: rgba(255, 255, 255, 1) !important; }
+
+/* 중간 높이(2,5,6,7번째 행 공통) - 살짝 더 낮춤 */
+.rowMid { min-height: clamp(26px, 8.4vw, 60px); display:flex; align-items:center; justify-content:center; padding: 2px 6px; }
+/* 불사용 행 크기 유틸 제거: .rowMidLarge */
+
+/* 뱃지 두 행 사이 가로 구분선(천간 아래 라인만 얇고 회색) */
+.thinDivider { border-bottom: 0.5px solid rgba(155, 155, 155, 1) !important; }
+
+.badge {
+	/* 셀 대비 최대 크기 제한: 셀을 꽉 채우되 여백 약간 유지 */
+	width: calc(100% + 2px); /* 가로폭 2px 추가 확대 */
+	height: 100%;
+	border-radius: clamp(10px, 4vw, 18px);
+	display: grid;
+	grid-template-rows: min-content 1fr min-content; /* 상단-중앙-하단 3분할, 내용 크기에 맞춤 */
+	place-items: center; /* 수직/수평 중앙 정렬 */
+	align-content: center;
+	gap: clamp(0px, 0.6vw, 2px);
+	margin: 0 -1px; /* 좌우 각각 1px 확장 보정 */
+	position: relative;
+	box-sizing: border-box; /* 테두리를 폭/높이에 포함 → 흰색 뱃지와 시각적 가로 통일 */
+	overflow: hidden; /* 내용이 둥근 모서리를 벗어나지 않도록 */
+	padding: clamp(1px, 0.8vw, 6px);
+}
+
+.badgeTop {
+	position: static; /* 그리드 플로우에 포함 */
+	top: auto;
+	left: auto;
+	transform: none;
+	grid-row: 1;
+	font-family: 'Gyeonggi_Batang_Regular', sans-serif;
+	font-size: clamp(5px, 2.2vw, 9px);
+	font-weight: 300; /* 지정 폰트 굵기 */
+	color: #fff;
+	letter-spacing: 0.02em;
+	line-height: 1;
+	white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+.white .badgeTop { color: #2b2d31; }
+
+.badgeMain {
+	font-size: clamp(9px, 4.6vw, 22px);
+	line-height: 1;
+	grid-row: 2;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+}
+
+.badgeSub {
+	font-family: 'Gyeonggi_Batang_Regular', sans-serif;
+	font-size: clamp(4.5px, 2vw, 10px);
+	opacity: 0.9;
+	font-weight: 300; /* 지정 폰트 굵기 */
+	grid-row: 3;
+	line-height: 1;
+	white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 배지 색상 */
+.black {
+	background: #2d2f34;
+	color: #fff;
+}
+
+.red {
+	background: #b64b4b;
+	color: #fff;
+}
+
+.teal {
+	background: #2a8f8b;
+	color: #fff;
+}
+
+.white {
+	background: #fff;
+	color: #2b2d31;
+	border: 2px solid #2c3e50;
+}
+
+.pairCn { font-size: clamp(9px, 3.2vw, 15px); font-weight: 700; }
+.pairKr { font-family: 'Gyeonggi_Batang_Regular', sans-serif; font-size: clamp(6.5px, 2.4vw, 12px); opacity: 0.9; margin-top: 2px; font-weight: 300; font-synthesis: none; }
+
+/* 스택 정렬과 하단 행 높이 */
+.stack { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.rowVeryTall { min-height: clamp(64px, 19vw, 116px); display:flex; align-items:center; justify-content:center; }
+
+/* 특정 행 높이 조절용 유틸 */
+/* 천간/지지 줄 높이: 표 변경 없이 이전 값으로 복원 */
+/* 배지 줄 높이 살짝 축소 */
+.rowTall { min-height: clamp(34px, 8.2vw, 56px); height: auto; display:flex; align-items:center; justify-content:center; padding: 0 4px; }
+.rowHeadTall { min-height: clamp(34px, 8.2vw, 56px); height: auto; display:flex; align-items:center; justify-content:center; padding: 0 4px; flex-direction: column; gap: 2px; white-space: nowrap; }
+
+@media (max-width: 360px) {
+	/* 초소형 화면에서 내부 여백을 더 줄여 텍스트가 잘리지 않도록 */
+	.cell, .rowHead, .colHead { padding: 0 2px; }
+	.badge { padding: clamp(0px, 0.6vw, 4px); }
+}
+
+/* 첫 번째 세로열: 한자(1행) 대비 한글(2행)을 4px 작게 */
+.rowHead > *:first-child,
+.rowHeadTall > *:first-child {
+	font-size: clamp(7px, 2.2vw, 13px);
+}
+
+.rowHead > *:last-child,
+.rowHeadTall > *:last-child {
+	font-size: clamp(7px, 2.3vw, 9.5px);
+	font-family: 'Gyeonggi_Batang_Regular', sans-serif;
+	font-weight: 300;
+	font-synthesis: none;
+}
+
+@media (min-width: 480px) {
+	.grid {
+		grid-template-columns: clamp(72px, 15%, 140px) repeat(4, 1.22fr); /* 큰 화면에서 첫 열 크게, 데이터 열도 넓게 */
+	}
+	.cell, .rowHead, .colHead { padding: 2px 6px; }
+}
+
+
