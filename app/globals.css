@@ -83,4 +83,9 @@ body {
 .fw-800 { font-family: 'Pretendard-ExtraBold', 'Pretendard', sans-serif; font-weight: 800; }
 .fw-900 { font-family: 'Pretendard-Black', 'Pretendard', sans-serif; font-weight: 900; }
 
+@media (max-width: 280px) {
+	/* 초초소형 화면: 말풍선 텍스트 더 축소 */
+	.bubble { font-size: clamp(8px, 3.8vw, 16px); }
+}
+
 

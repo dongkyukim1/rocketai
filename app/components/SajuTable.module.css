@@ -318,6 +318,24 @@
 	.grid { min-width: 300px; }
 }
 
+@media (max-width: 280px) {
+	/* 280px 이하: 폰트/행높이/뱃지 더 축소 */
+	.grid { grid-template-columns: clamp(30px, 20%, 90px) repeat(4, 1fr); }
+	.colHead { font-size: clamp(10px, 4vw, 16px); }
+	.cell, .rowHead, .colHead { font-size: clamp(7px, 1.8vw, 12px); padding: 0 1px; }
+	.rowMid { min-height: clamp(14px, 6.8vw, 40px); padding: 1px 2px; }
+	.rowTall, .rowHeadTall { min-height: clamp(20px, 6.4vw, 42px); }
+	.rowVeryTall { min-height: clamp(36px, 13vw, 80px); }
+	.pairCn { font-size: clamp(6px, 2.4vw, 11px); }
+	.pairKr { font-size: clamp(5px, 2vw, 9px); }
+	.badge { padding: clamp(0px, 0.4vw, 3px); border-radius: clamp(7px, 2.6vw, 12px); }
+	.badgeMain { font-size: clamp(6.5px, 3.2vw, 16px); }
+	.badgeTop { font-size: clamp(3.2px, 1.4vw, 7px); }
+	.badgeSub { font-size: clamp(3.2px, 1.4vw, 7px); }
+	.title { font-size: clamp(10px, 3vw, 15px); }
+	.datetime { font-size: clamp(10px, 3.6vw, 16px); }
+}
+
 /* 첫 번째 세로열: 한자(1행) 대비 한글(2행)을 4px 작게 */
 .rowHead > *:first-child,
 .rowHeadTall > *:first-child {
