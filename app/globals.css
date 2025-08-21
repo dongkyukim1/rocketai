@@ -67,8 +67,8 @@ body {
 .bubble { position: absolute; width: 78%; text-align: center; color: #2b2d31; font-family: 'GapyeongHanseokbong-Bold', sans-serif; font-weight: 400; font-size: clamp(15px, 3.6vw, 19px); line-height: 1.5; letter-spacing: -0.025em; z-index: 1000; top: var(--top, auto); right: var(--right, auto); bottom: var(--bottom, auto); left: var(--left, auto); transform: translate(var(--tx, 0), var(--ty, 0)); }
 /* 중앙 정렬 헬퍼 */
 .bubble.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.bubble.b1 { position: absolute; left: 35%; top: 34.3%; }
-.bubble.b2 { position: absolute; left: 39%; top: 52.0%; }
+.bubble.b1 { position: absolute; left: 45%; top: 34.3%; }
+.bubble.b2 { position: absolute; left: 54%; top: 52.0%; }
 /* 컨테이너는 기준 컨텍스트 제공 */
 .container { position: relative; }
 
