@@ -70,16 +70,16 @@
 	background:
 		/* 좌측 세로선 */
 		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
-			left calc(var(--guide-offset) - 2px) top 0 / 1px 100% no-repeat,
+			left calc(var(--guide-offset) - 2px) top 0 / 2px 100% no-repeat,
 		/* 우측 세로선 */
 		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
-			right calc(var(--guide-offset) - 4px) top 0 / 1px 100% no-repeat,
+			right calc(var(--guide-offset) - 4px) top 0 / 2px 100% no-repeat,
 		/* 상단 가로선 */
 		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
-			left 0 top var(--guide-offset-top) / 100% 1px no-repeat,
+			left 0 top var(--guide-offset-top) / 100% 2px no-repeat,
 		/* 하단 가로선 */
 		linear-gradient(rgba(43, 85, 126, 1), rgba(43, 85, 126, 1))
-			left 0 bottom var(--guide-offset-bottom) / 100% 1px no-repeat;
+			left 0 bottom var(--guide-offset-bottom) / 100% 2px no-repeat;
 }
 
 .header {
