@@ -2,8 +2,8 @@ import './globals.css';
 import React from 'react';
 
 export const metadata = {
-  title: '웹툰 캔버스',
-  description: '1-2-3 이미지를 연결한 반응형 페이지',
+  title: '로켓ai_김동규',
+  description: '로켓ai_김동규_코딩테스트과제물',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
